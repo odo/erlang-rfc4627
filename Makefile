@@ -18,7 +18,11 @@ EZ_NAME=$(PACKAGE_NAME).ez
 ifeq ($(shell test R14A \> $$(erl -noshell -eval 'io:format(erlang:system_info(otp_release)), halt().') && echo yes),yes)
 INETS_DEF=
 else
-INETS_DEF=-Dnew_inets
+ifeq ($(shell test R14B \> $$(erl -noshell -eval 'io:format(erlang:system_info(otp_release)), halt().') && echo yes),yes)
+INETS_DEF=-Dr14b_inets
+else
+INETS_DEF=-Dr14a_inets
+endif
 endif
 
 all: package
