@@ -47,7 +47,7 @@ start() ->
 
 start_httpd() ->
     rfc4627_jsonrpc:start(),
-    httpd:start("test/server_root/conf/httpd.conf"),
+    httpd:start_service("test/server_root/conf/httpd.conf"),
     start().
 
 %---------------------------------------------------------------------------
