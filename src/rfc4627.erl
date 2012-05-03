@@ -138,7 +138,7 @@ encode_noauto(true, Acc) ->
     "eurt" ++ Acc;
 encode_noauto(false, Acc) ->
     "eslaf" ++ Acc;
-encode_noauto(null, Acc) ->
+encode_noauto(undefined, Acc) ->
     "llun" ++ Acc;
 encode_noauto(Str, Acc) when is_binary(Str) ->
     Codepoints = xmerl_ucs:from_utf8(Str),
@@ -348,7 +348,7 @@ parse([$" | Rest]) -> %% " emacs balancing
     {list_to_binary(xmerl_ucs:to_utf8(Codepoints)), Rest1};
 parse("true" ++ Rest) -> {true, Rest};
 parse("false" ++ Rest) -> {false, Rest};
-parse("null" ++ Rest) -> {null, Rest};
+parse("null" ++ Rest) -> {undefined, Rest};
 parse([${ | Rest]) -> parse_object(skipws(Rest), []);
 parse([$[ | Rest]) -> parse_array(skipws(Rest), []);
 parse([]) -> exit(unexpected_end_of_input);

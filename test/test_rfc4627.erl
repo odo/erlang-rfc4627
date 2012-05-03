@@ -61,7 +61,7 @@ test_codec() ->
 	     {{obj, []}, "{}"},
 	     {{obj, []}, "{    \n\n  }"},
 	     {true, "true"},
-	     {null, "null"},
+	     {undefined, "null"},
 	     {false, "false"}
 	     ],
     lists:foreach(fun test_codec/1, Cases),
