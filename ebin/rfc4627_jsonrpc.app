@@ -2,6 +2,7 @@
  [{description, "JSON RPC Service"},
   {vsn, "0.01"},
   {modules, [
+    json,
     rfc4627,
     rfc4627_jsonrpc,
 	rfc4627_jsonrpc_app,
